@@ -1,7 +1,8 @@
 {
     'name': 'Factura Beeren',
-    'version': '15.0.0.1.0',
-    'author': 'Fernando Rodriguez',
+    'version': '17.0.1.0',
+    'license': 'LGPL-3',
+    'author': 'Fernando Rodriguez C',
     'summary': 'Module to hide Account field in Invoice Lines',
     'category': 'Accounting',
     'depends': [

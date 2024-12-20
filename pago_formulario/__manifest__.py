@@ -1,7 +1,8 @@
 {
     'name': 'Pagos Beeren',
-    'version': '15.0.0.1.0',
-    'author': 'Fernando Rodriguez',
+    'version': '17.0.1.0',
+    'license': 'LGPL-3',
+    'author': 'Fernando Rodriguez C',
     'summary': 'Ajuste del formato de pago',
     'category': 'Accounting',
     'depends': [
