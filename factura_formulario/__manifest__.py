@@ -9,8 +9,9 @@
         'account','product','producto_market'
     ],
     'data': [
+        'reports/factura_reports.xml',
         'views/factura_beeren.xml',
-        'report/facturabeeren.xml',
+        'reports/facturabeeren.xml',
     ],
     'installable': True,
     'auto_install': False,
