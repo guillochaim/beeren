@@ -4,7 +4,16 @@
         <field name="model">account.move</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">factura_formulario.report_factura_beeren_25</field>
-        <field name="binding_model_id" ref="model_factura_formulario_factura_beeren"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>   
+
+    <record id="manifiestos_manifiesto_factura_report" model="ir.actions.report">
+        <field name="name">Factura</field>
+        <field name="model">manifiestos.manifiesto</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">manifiestos.report_manifiesto_factura</field>
+        <field name="binding_model_id" ref="model_manifiestos_manifiesto"/>
         <field name="binding_type">report</field>
     </record>   
 </odoo>
