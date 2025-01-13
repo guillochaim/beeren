@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="sign_template_view_form_inherit" model="ir.ui.view">
+            <field name="name">sign.template.form.inherit</field>
+            <field name="model">sign.template</field>
+            <field name="inherit_id" ref="sign.sign_template_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='authorized_ids']" position="after">
+                    <button string="Agregar los campos" icon="fa-wrench" type="object" name="go_to_custom_template_serra" class="oe_stat_button"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+

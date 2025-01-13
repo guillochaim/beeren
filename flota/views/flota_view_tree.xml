@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="flota_view_tree" model="ir.ui.view">
+      <field name="name">flota.view.tree</field>
+      <field name="model">fleet.vehicle</field>
+      <field name="inherit_id" ref="fleet.fleet_vehicle_view_tree"/>
+      <field name="arch" type="xml">
+        <!--campos ocultos de la vista -->
+        <field name="driver_id" position="replace">
+          <field name="driver_id" invisible="1" optional="hide"/>
+        </field>
+        <field name="future_driver_id" position="replace">
+          <field name="future_driver_id" invisible="1" optional="hide"/>
+        </field>
+        <field name="tag_ids" position="replace">
+          <field name="tag_ids" invisible="1" optional="hide"/>
+        </field>
+        <!-- Posisionamiento de campos de la vista -->
+        <field name="license_plate" position="before">
+          <field name="no_economico" optional="show"/>
+        </field>
+        <field name="license_plate" position="after">
+          <field name="conductor" optional="show"/>
+          <field name="vin_sn" optional="show"/>
+          <field name="tipo_vehiculo" optional="show"/>
+          <field name="model_year" optional="show"/>
+          <field name="color" optional="show"/>
+          <field name="acquisition_date" optional="show"/>
+          <field name="capacidad_remolque" optional="show"/>
+          <field name="company_id" optional="show"/>
+        </field>
+        <!-- Renombre de campos de la vista -->
+        <!--field name="project_id" position="attributes">
+          <attribute name="string">Ruta</attribute>
+        </field-->
+      </field>
+    </record>
+</odoo>

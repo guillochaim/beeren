@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_inherited" model="ir.ui.view">
+            <field name="name">res.partner.form.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <!-- <field name="arch" type="xml">
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='contact_addresses']/field[@name='child_ids']/form[1]/sheet[1]/group[1]/group[2]/field[@name='mobile']" position="after">
+                    <field name="numero_generador_c" string="Numero de Generador"/>
+                </xpath> -->
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                        <field name="numero_generador_c"/>
+                        <field name="nombre_representante_c"/>
+                        <field name="contacto_firma"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

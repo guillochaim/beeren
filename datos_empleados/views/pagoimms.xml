@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="pagoimms_view_form" model="ir.ui.view">
+        <field name="name">pagoimms.view.form</field>
+        <!-- <field name="model">hr.plan</field> -->
+        <field name="model">mail.activity.plan</field>
+        <!-- <field name="inherit_id" ref="hr.hr_plan_view_form"></field> -->
+        <field name="inherit_id" ref="hr.mail_activity_plan_view_form_hr_employee"></field>
+        <field name="arch" type="xml">
+        
+
+            <field name="department_id" position="replace">
+                <field name="pago_imss" string="Pago de Seguro"/>
+                <!-- <field name="empresa" string="Empresa"/> -->
+            </field>
+            <!-- Campos extraños de este modulo -->
+            <field name="template_ids" position="replace">
+                <field name="campo_nones" string="" readonly="1"/>
+            </field>            
+        </field>
+    </record>
+    <record id="pago_imss_view_tree" model="ir.ui.view">
+        <field name="name">pago.imss.view.tree</field>
+        <field name="model">mail.activity.plan</field>
+        <field name="inherit_id" ref="mail.mail_activity_plan_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="steps_count" position="replace">
+                <field name="company_id"/>
+                <!-- <field name="steps_count" invisible="1"/>
+                <field name="department_id" invisible="1"/> -->
+            </field>
+            <field name="department_id" position="replace">
+                <field name="pago_imss"/>
+                <!-- <field name="steps_count" invisible="1"/>
+                <field name="department_id" invisible="1"/> -->
+            </field>
+        </field>
+    </record>
+</odoo>

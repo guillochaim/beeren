@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="datosempleados_view_form" model="ir.ui.view">
+        <field name="name">datosempleados.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='public']" position="after">
+                <page string="Documentación">
+                    <group string="Documentación Personal">
+                        <field name="acta_nacimiento"/>
+                        <field name="domicilio"/>
+                        <field name="estudios"/>
+                        <field name="curp_serra"/>
+                        <field name="rfc_serra"/>
+                        <field name="ine"/>
+                        <field name="f_rcontrol"/>
+                        <field name="f_pasaporte"/>
+                        <field name="f_fpasaporte"/>
+                        <field name="f_visa"/>
+                        <field name="f_fvisa"/>
+                        <field name="f_afore"/>
+                        <field name="f_firma"/>
+                    </group>
+                    <group string="Seguro">
+                        <field name="nseguridad_social_serra"/>
+                        <field name="alta_patronal"/>
+                        <field name="alta_imss"/>
+                        <field name="infonavit"/>
+                    </group>
+                    <group string="Contratos">
+                        <field name="empleado_fecha_ingreso"/>
+                        <field name="empleado_contrato"/>
+                        <field name="empleado_reglamento"/>
+                        <field name="empleado_codigo_etica"/>
+                        <field name="empleado_baja_fecha"/>
+                        <field name="empleado_baja"/>
+                        <field name="empleado_motivo_baja"/>
+                        <field name="no_antesedentes"/>
+                        <field name="recomendacion1"/>
+                        <field name="recomendacion2"/>
+                    </group>
+                    <group string="Vehículo">
+                        <field name="licencia"/>
+                        <field name="licencia_1"/>
+                        <field name="vigencia"/>
+                        <field name="chofer_examen"/>
+                        <field name="vigencia_exam"/>
+                    </group>
+                    <group string="Responsibas">
+                        <field name="res_unidad"/>
+                        <field name="res_llave_caseta"/>
+                        <field name="res_llave_diesel"/>
+                        <field name="res_telefono"/>
+                        <field name="res_equipo"/>
+                        <field name="res_resguardo1"/>
+                        <field name="res_resguardo2"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
