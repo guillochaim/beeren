@@ -65,15 +65,17 @@ class Manifiesto(models.Model):
     # f_firma_chofer = fields.Binary(string='Firma del Chofer')
 
     #Campos sin permisos 
-    conductor_firma = fields.Char(string='Firma del Conductor', compute='_compute_conductor_firma')
+    # 25
+    # conductor_firma = fields.Char(string='Firma del Conductor', compute='_compute_conductor_firma')
 
 
-    @api.depends('vehicle_id.conductor')
-    def _compute_conductor_firma(self):
-        for record in self:
-            # Usar sudo para evitar problemas de permisos
-            conductor = record.vehicle_id.conductor.sudo()
-            record.conductor_firma = conductor.f_firma if conductor else ''
+    # @api.depends('vehicle_id.conductor')
+    # def _compute_conductor_firma(self):
+    #     for record in self:
+    #         # Usar sudo para evitar problemas de permisos
+    #         conductor = record.vehicle_id.conductor.sudo()
+    #         record.conductor_firma = conductor.f_firma if conductor else ''
+    # 25
 #Campos sin permisos 
 
     def generate_qr_code_text(self):
