@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-  <report id="report_session" model="account.move" string="Factura Beeren" 
+  <report id="report_session" model="account.move" string="Factura Beeren 25" 
   name="factura_formulario.report_factura_beeren" file="factura_formulario.report_session" report_type="qweb-pdf" />
   
   <template id="report_factura_beeren">
