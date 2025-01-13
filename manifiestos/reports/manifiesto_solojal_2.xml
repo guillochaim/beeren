@@ -3,7 +3,7 @@
   <report
     id="manifiestos_manifiesto_jal_2_report"
     model="manifiestos.manifiesto"
-    string="Manifiesto"
+    string="Manifiestooooo"
     name="manifiestos.report_manifiesto_jal_2"
     file="manifiestos.report_manifiesto_jal_2"
     report_type="qweb-pdf"
