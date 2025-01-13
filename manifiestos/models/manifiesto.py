@@ -1,5 +1,4 @@
 import base64
-from rembg import remove
 from io import BytesIO
 from PIL import Image
 from odoo import models, fields, api
