@@ -173,7 +173,8 @@
 
                                 <!--Tax totals-->
                                 <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
-                                <t t-call="account.document_tax_totals"/>
+                                <!-- Revisar
+                                <t t-call="account.document_tax_totals"/> -->
 
                                 <!--Payments-->
                                 <t t-if="print_with_payments">
