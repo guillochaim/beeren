@@ -15,15 +15,16 @@
         <field name="report_name">manifiestos.report_manifiesto_jal_2</field>
         <field name="binding_model_id" ref="model_manifiestos_manifiesto"/>
         <field name="binding_type">report</field>
-    </record>   
-
+    </record>  
     <record id="manifiestos_manifiesto_factura_report" model="ir.actions.report">
-        <field name="name">Manifiesto Report</field>
+        <field name="name">Factura</field>
         <field name="model">manifiestos.manifiesto</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">manifiestos.report_manifiesto_factura</field>
-        <field name="print_report_name">'Factura - %s' % (object.name)</field>
-    </record>
+        <field name="binding_model_id" ref="model_manifiestos_manifiesto"/>
+        <field name="binding_type">report</field>
+    </record>   
+
 </odoo>
 
 
