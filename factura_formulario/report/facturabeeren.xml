@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-  <report id="report_session" model="account.move" string="Factura Beeren 25" 
-  name="factura_formulario.report_factura_beeren" file="factura_formulario.report_session" report_type="qweb-pdf" />
+  <report 
+  id="report_factura_beeren"
+  model="account.move"
+  report_type="qweb-pdf"
+  string="Factura Beeren 25"
+  name="factura_formulario.report_factura_beeren"
+  file="factura_formulario.report_factura_beeren"
+  print_report_name="'Factura Beeren 25 - %s' % (object.name)" />
   
   <template id="report_factura_beeren">
     <t t-call="web.html_container">
