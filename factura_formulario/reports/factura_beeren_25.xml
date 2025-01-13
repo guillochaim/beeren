@@ -233,24 +233,25 @@
                 </div>
 
 
-
+                <!-- Revisar
                 <div class="container-fluid">
                   <div class="row" id="complement" style="font-size: 8px; color: BLACK; border: 0px solid #000;">
-                    <!-- Revisar
+                    Revisar
                     <div t-if="cfdi_vals.get('sello')" class="barcode col-2">
                         <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=100&amp;height=100' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt='%.*f' % (o.currency_id.decimal_places, o.l10n_mx_edi_cfdi_amount), id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(                                     cfdi_vals['sello'][-8:], 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
-                    </div> -->
+                    </div>
                     <div class="complement-details col-10" style="font-size: 5px; color: BLACK;">
                         <div class="digital-stamp">
                             <span>Digital stamp of the emitter</span>
                         </div>
-                        <!-- Revisar
+                        
                         <div class="digital-stamp-content">
                             <span t-esc="cfdi_vals.get('sello')"/>
-                        </div>-->
+                        </div>
                         <div class="digital-stamp">
                             <span>Digital stamp SAT</span>
                         </div>
+                        
                         <div class="digital-stamp-content">
                             <span t-esc="cfdi_vals.get('sello_sat')"/>
                         </div>
@@ -277,7 +278,7 @@
                         </div>
                     </div>
                   </div>
-                </div>
+                </div>-->
             </t>
         </t>
     </t>
