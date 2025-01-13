@@ -11,7 +11,7 @@
     'data': [
         'reports/factura_reports.xml',
         'views/factura_beeren.xml',
-        'reports/facturabeeren.xml',
+        'reports/factura_beeren_25.xml',
     ],
     'installable': True,
     'auto_install': False,

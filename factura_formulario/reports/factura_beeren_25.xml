@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <report 
-  id="report_facturabeeren"
-  model="account.move"
-  string="Factura Beeren 25"
-  report_type="qweb-pdf"
-  name="factura_formulario.report_facturabeeren"
-  file="factura_formulario.report_facturabeeren"
-  print_report_name="'Factura Beeren 25 - %s' % (object.name)" />
-  
-  <template id="report_facturabeeren">
+  <report
+    id="factura_formulario_factura_beeren_25_report"
+    model="account.move"
+    string="Factura Beeren 25"
+    name="manifiestos.report_factura_beeren_25"
+    file="manifiestos.report_factura_beeren_25"
+    report_type="qweb-pdf"
+  />
+  <template id="report_factura_beeren_25">
     <t t-call="web.html_container">
       <t t-set="data_report_margin_top" t-value="12"/>
       <t t-set="data_report_header_spacing" t-value="0"/>
