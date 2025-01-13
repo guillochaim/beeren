@@ -57,8 +57,8 @@ class Manifiesto(models.Model):
         ('bd', 'Tralisol'),
         ('man', 'Manual'),
     ], string='Chofer', required=True , default='bd')
-
-    f_firma_chofer = fields.Binary(string="Firma Chofer")
+    # 25
+    # f_firma_chofer = fields.Binary(string="Firma Chofer")
 
 #ok
     # chofer_bd_man_bol = fields.Boolean(string='Chofer Asignado')
@@ -404,8 +404,10 @@ class Manifiesto(models.Model):
         if 'estado' in vals:
             vals['consecutivo'], vals['num_mani'] = self._generate_consecutivo(vals['estado'])
         # Procesar la imagen de la firma del chofer si está presente
-        if 'f_firma_chofer' in vals:
-            vals['f_firma_chofer'] = self._remove_background(vals['f_firma_chofer']) 
+        
+        # 25
+        # if 'f_firma_chofer' in vals:
+        #     vals['f_firma_chofer'] = self._remove_background(vals['f_firma_chofer']) 
         return super(Manifiesto, self).create(vals)
         
 
@@ -414,8 +416,9 @@ class Manifiesto(models.Model):
         if 'estado' in vals:
             for record in self:
                 vals['consecutivo'], vals['num_mani'] = self._generate_consecutivo(vals['estado'])
-        if 'f_firma_chofer' in vals:
-            vals['f_firma_chofer'] = self._remove_background(vals['f_firma_chofer'])  
+        # 25        
+        # if 'f_firma_chofer' in vals:
+        #     vals['f_firma_chofer'] = self._remove_background(vals['f_firma_chofer'])  
         return super(Manifiesto, self).write(vals)
 
     def _generate_consecutivo(self, estado):
