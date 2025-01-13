@@ -9,6 +9,7 @@
         'views/manifiesto_view.xml',
         'views/templates.xml',
         'reports/manifiesto_solojal_2.xml',
+        'reports/manifiesto_factura.xml',
     ],
     'installable': True,
     'application': True,
