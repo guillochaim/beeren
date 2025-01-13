@@ -31,7 +31,8 @@
                                 <field name="auto_placa" string="No. de Placa" invisible="auto_bd_man != 'man'"/>
                                 <field name="chofer_bd_man" string="Chofer Asignado" required="1"/>
                                 <field name="chofer_nombre" string="Nombre Chofer" invisible="chofer_bd_man != 'man'"/>
-                                <field name="f_firma_chofer" invisible="chofer_bd_man != 'man'"/>
+                                <!-- 25
+                                <field name="f_firma_chofer" invisible="chofer_bd_man != 'man'"/> -->
                                 <field name="chofer_licencia" string="Licencia Chofer" invisible="chofer_bd_man != 'man'"/>
                                 <field name="chofer_tipo" string="Tipo Chofer" invisible="chofer_bd_man != 'man'"/>
                                 <field name="chofer_cargo" string="Cargo Chofer" invisible="chofer_bd_man != 'man'"/>
