@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <report
+    id="manifiestos_manifiesto_jal_2_report"
+    model="manifiestos.manifiesto"
+    string="Manifiesto"
+    name="manifiestos.report_manifiesto_jal_2"
+    file="manifiestos.report_manifiesto_jal_2"
+    report_type="qweb-pdf"
+  />
+
+  <template id="report_manifiesto_jal_2">
+    <t t-call="web.html_container">
+      <t t-set="data_report_margin_top" t-value="12"/>
+      <t t-set="data_report_header_spacing" t-value="0"/>
+      <t t-foreach="docs" t-as="o" t-if="o.estado == 'jal'">
+        <t t-call="web.basic_layout">
+          <div class="page">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-4 text-center p-4">
+                  <img t-att-src="'/manifiestos/static/img/jalisco.png'" width="118px" height="43px"/>
+                </div>
+                <div class="col-4 text-center p-4">
+                  <P style="font-size: 12px; color: black; text-align: center;"><strong>MANIFIESTO DE ENTREGA, TRANSPORTE Y RECEPCION DE RESIDUOS DE MANEJO ESPECIAL NO PELIGROSOS.</strong></P>
+                </div>
+                <div class="col-2 text-center p-2">
+                  <img t-att-src="'/manifiestos/static/img/logo_tra.png'" width="73px" height="56px"/>
+                </div>
+                <div class="col-2 text-center p-2">
+                  <P style="font-size: 10px; color: black; text-align: center;">
+                    No. DE MANIFIESTO:<br/><span style="font-size: 12px; color: Red;" t-field="o.consecutivo"/>
+                    <BR/>
+                    SELLO: 
+                    <BR/>
+                    <span style="font-size: 12px; color: Red;" t-field="o.sello"/>
+                  </P>
+                  <!-- <P style="font-size: 10px; color: black; text-align: center;">PAGINA 1</P> -->
+                </div>                
+              </div>
+            </div>
+
+            <div class="text-center" style="background-color: #000000; font-size: 10px; color: white;">
+              <h6>GENERADOR</h6>
+            </div>
+            <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+              <tbody>
+                <tr>
+                  <th style="width: 25%;"><strong>NÚM. DE REGISTRO:</strong> <span t-field="o.partner_id.numero_generador_c" /></th>
+                  <th style="width: 25%;"><strong>RAZÓN SOCIAL:</strong> <span t-field="o.partner_id.parent_id" /></th>
+                  <th style="width: 25%;"><strong>DOMICILIO:</strong> <span t-esc="o.partner_id.street_name and o.partner_id.street_name.upper() or ''" />-<span t-field="o.partner_id.street_number" /></th>
+                  <th style="width: 25%;"><strong>C.P.:</strong> <span t-field="o.partner_id.zip" /></th>
+                </tr>
+                <tr>
+                  <th><strong>COLONIA:</strong> <span t-esc="o.partner_id.l10n_mx_edi_colony and o.partner_id.l10n_mx_edi_colony.upper() or ''" /></th>
+                  <th><strong>MUNICIPIO:</strong> <span t-esc="o.partner_id.city and o.partner_id.city.upper() or ''" /></th>
+                  <th><strong>ESTADO:</strong> <span t-esc="o.partner_id.state_id and o.partner_id.state_id.name and o.partner_id.state_id.name.upper() or ''" /></th>
+                  <th><strong>TELÉFONO:</strong> <span t-field="o.partner_id.phone" /></th>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="text-center" style="background-color: #000000; font-size: 10px; color: white;">
+              <h6>RESIDUO</h6>
+            </div>
+
+            <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+              <thead>
+                <tr>
+                  <th rowspan="2">DESCRIPCIÓN</th>
+                  <th colspan="2">CONTENEDOR</th>
+                  <th rowspan="2" style="vertical-align: middle;">CANTIDAD TOTAL DE RESIDUO</th>
+                  <th rowspan="2" style="vertical-align: middle;">UNIDAD VOLUMEN</th>
+                </tr>
+                <tr>
+                  <th>TIPO</th>
+                  <th>CAPACIDAD</th>
+                </tr>
+              </thead>
+              <t t-foreach="o.lines" t-as="productos">
+                <tbody>
+                  <tr>
+                    <td><span t-esc="productos.product_id.name and productos.product_id.name.upper() or ''" /></td>
+                    <td><span t-esc="productos.tipo and productos.tipo.upper() or ''" /></td>
+                    <td><span t-field="productos.capacidad" /></td>
+                    <td><span t-field="productos.cantidad" /></td>
+                    <td><span t-esc="productos.unidad and productos.unidad.upper() or ''" /></td>
+                  </tr>
+                </tbody>
+              </t>
+            </table>
+
+
+
+
+            <div class="text-left" style="font-size: 10px; color: black;">
+              <strong>INSTRUCCIONES ESPECIALES E INFORMACION ADICIONAL PARA EL MANEJO SEGURO:</strong><span style="color: white;">E</span> <span t-esc="o.instrucciones and o.instrucciones.upper() or ''" />
+            </div>
+            <div class="text-left" style="font-size: 10px; color: black;">
+              <strong>CERTIFICACIÓN DEL GENERADOR:</strong><p>DECLARO QUE EL CONTENIDO DE ESTE LOTE ESTÁ TOTAL Y CORRECTAMENTE DESCRITO MEDIANTE EL NOMBRE DEL RESIDUO, BIEN EMPACADO Y QUE SE HAN PREVISTO LAS CONDICIONES DE SEGURIDAD PARA SU TRANSPORTE POR VÍA TERRESTRE DE ACUERDO A LA LEGISLACIÓN NACIONAL VIGENTE.</p>
+              <br/> 
+              <strong>NOMBRE Y FIRMA:</strong>
+              <span t-esc="o.nombre_7 and o.nombre_7.upper() or ''" />
+              ___________________________________________
+            </div>
+
+            <br/>            
+            <div class="text-center" style="background-color: #000000; font-size: 10px; color: white;">
+              <h6>TRANSPORTE</h6>
+            </div>
+            <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+              <tbody>
+                <tr>
+                  <td style="width: 50%;"><strong>NOMBRE DE LA EMPRESA TRANSPORTISTA:</strong> TRANSPORTADORA TRALISOL S.A. DE C.V.</td>
+                  <td style="width: 50%;"><strong>DOMICILIO:</strong> CARRETERA AL PUESTO KM 6, COL. CENTRO, CP 47400, LAGOS DE MORENO, JALISCO, MEXICO.</td>
+                </tr>
+                <tr>
+                  <td><strong>TELÉFONO:</strong> (331)0310309</td>
+                  <td><strong>AUTORIZACIÓN SEMADET:</strong> <span t-field="o.emp_permiso" /></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+              <thead>
+                <tr>
+                  <th style="width: 33%;">DESCRIPCION (NOMBRE DEL RESIDUO)</th>
+                  <th style="width: 33%;">CANTIDAD TOTAL DE RESIDUO</th>
+                  <th style="width: 33%;">UNIDAD VOLUMEN</th>
+                </tr>
+              </thead>
+              <t t-foreach="o.lines" t-as="productos" >   
+                <tbody class="invoice_tbody">
+                  <td class="text-center"><span t-esc="productos.product_id.name and productos.product_id.name.upper() or ''"/></td>
+                  <td class="text-center"><span t-field="productos.cantidad"/></td>
+                  <td class="text-center"><span t-esc="productos.unidad and productos.unidad.upper() or ''"/></td>
+                </tbody>
+              </t>
+            </table>
+
+            <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+              <tbody>
+                <tr>
+                  <td style="width: 50%;"><strong>RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO PARA SU TRANSPORTE</strong></td>
+                  <td style="width: 50%;"><strong>FECHA DE RECOLECCIÓN:</strong> <span t-field="o.fecha_1"/></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+              <thead>
+                <tr>
+                  <th style="width: 33%;">NOMBRE</th>
+                  <th style="width: 33%;">CARGO</th>
+                  <th style="width: 33%;">FIRMA</th>
+                </tr>
+              </thead> 
+              <tbody>
+                <td>
+                  <span t-if="o.chofer_bd_man == 'bd'">
+                    <span t-esc="o.vehicle_id.conductor and o.vehicle_id.conductor.name and o.vehicle_id.conductor.name.upper() or ''"/>
+                  </span>
+                  <span t-if="o.chofer_bd_man == 'man'">
+                    <span t-esc="o.chofer_nombre and o.chofer_nombre.upper() or ''"/>
+                  </span>
+                </td>
+                <td>
+                  <span t-if="o.chofer_bd_man == 'bd'">
+                    <strong></strong><span t-esc="o.vehicle_id.conductor.job_title and o.vehicle_id.conductor.job_title.upper() or ''"/>
+                  </span>
+                  <span t-if="o.chofer_bd_man == 'man'">
+                    <strong></strong><span t-esc="o.chofer_cargo and o.chofer_cargo.upper() or ''"/>
+                  </span>
+                </td>
+
+                <td>
+                  <span t-if="o.chofer_bd_man == 'bd'">
+                    <img t-att-src="'data:image/png;base64,%s' % o.conductor_firma" alt="Firma del Conductor" style="max-height: 30px;"/>
+                  </span>
+                  <span t-if="o.chofer_bd_man == 'man'">
+                    <!-- <img t-att-src="'data:image/png;base64,%s' % o.f_firma_chofer" alt="Firma del Conductor" style="max-height: 30px;"/> -->
+                    <img t-att-src="'data:image/png;base64,%s' % o.f_firma_chofer.decode('utf-8')" alt="Firma del Conductor" style="max-height: 30px;"/>
+                  </span>
+                </td>
+
+                <!-- <td>                      
+                  <t t-if="o.conductor_firma">
+                      <img t-att-src="'data:image/png;base64,%s' % o.conductor_firma" alt="Firma del Conductor" style="max-height: 30px;"/>
+                  </t>                 
+                  <t t-else="">
+                    <br/> 
+                     <p>_____________________________</p> 
+                  </t>
+                </td> -->
+              </tbody>
+            </table>
+
+
+            <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+              <thead>
+                <tr>
+                  <th style="width: 33%;">TIPO DE VEHICULO</th>
+                  <th style="width: 33%;">PLACA</th>
+                </tr>
+              </thead> 
+              <tbody>
+                <td>
+                  <span t-if="o.auto_bd_man == 'bd'">
+                      <span t-field="o.vehicle_id.tipo_vehiculo"/>
+                  </span>
+                  <span t-if="o.auto_bd_man == 'man'">
+                      <span t-esc="o.auto_tipo and o.auto_tipo.upper() or ''"/>
+                  </span>
+                </td>
+                <td>
+                  <span t-if="o.auto_bd_man == 'bd'">
+                    <span t-esc="o.vehicle_id.license_plate and o.vehicle_id.license_plate.upper() or ''"/>
+                  </span>
+                  <span t-if="o.auto_bd_man == 'man'">
+                    <span t-esc="o.auto_placa and o.auto_placa.upper() or ''"/>
+                  </span>
+                </td>
+              </tbody>
+            </table>
+
+
+            <div class="container-fluid" t-if="o.acopio == 'aco' or o.acopio == 'dob'"  style="page-break-inside: avoid;">
+            <br/>             
+              <div class="row">
+                <div class="col-12 text-center" style="background-color: #000000; color: white;">
+                  <h6>ACOPIO</h6>  
+                </div>
+              </div>
+            <br/> 
+
+              <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+                <thead>
+                  <tr>
+                    <th style="width: 33%;">NOMBRE DE LA EMPRESA DESTINATARIA</th>
+                    <th style="width: 33%;">NÚMERO DE AUTORIZACIÓN</th>
+                    <th style="width: 33%;">DOMICILIO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <td class="text-center"><span t-field="o.acopio_id.parent_id"/></td>
+                  <td class="text-center"><span t-esc="o.acopio_id.numero_generador_c"/></td>
+                  <td class="text-center">
+                    <span t-esc="o.acopio_id.street_name and o.acopio_id.street_name.upper() or ''"/> 
+                    # <span t-esc="o.acopio_id.street_number"/> 
+                    , <span t-esc="o.acopio_id.l10n_mx_edi_colony and o.acopio_id.l10n_mx_edi_colony.upper() or ''"/> 
+                    , <span t-esc="o.acopio_id.city and o.acopio_id.city.upper() or ''"/>
+                    , <span t-esc="o.acopio_id.state_id.name and o.acopio_id.state_id.name.upper() or ''"/>
+                    , <span t-esc="o.acopio_id.zip"/>
+                    , <span t-esc="o.acopio_id.country_id.name and o.acopio_id.country_id.name.upper() or ''"/>
+                  </td>
+                </tbody>
+              </table>
+
+              <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+                <thead>
+                  <tr>
+                    <th style="width: 33%;">DESCRIPCION (NOMBRE DEL RESIDUO)</th>
+                    <th style="width: 33%;">CANTIDAD TOTAL DE RESIDUO</th>
+                    <th style="width: 33%;">UNIDAD VOLUMEN</th>
+                  </tr>
+                </thead>
+                <t t-foreach="o.lines" t-as="productos" >   
+                  <tbody class="invoice_tbody">
+                    <td class="text-center"><span t-esc="productos.product_id.name and productos.product_id.name.upper() or ''"/></td>
+                    <td class="text-center"><span t-field="productos.cantidad"/></td>
+                    <td class="text-center"><span t-esc="productos.unidad and productos.unidad.upper() or ''"/></td>
+                  </tbody>
+                </t>
+              </table>
+
+              <table class="table table-bordered" style="font-size: 10px; color: black; text-align: left;">
+                <tbody>
+                  <tr>
+                    <td style="width: 33%;"><strong>RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO</strong></td>
+                    <td style="width: 33%;"><strong>OBSERVACIONES: _______________________________.</strong></td> 
+                    <td style="width: 33%;"><strong>FECHA DE RECEPCIÓN:</strong> <span t-field="o.fecha_1"/></td>
+                  </tr>
+                </tbody>
+              </table>
+            
+
+
+              <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+                <tbody>
+                  <tr>
+                    <td style="width: 25%;">NOMBRE  <span t-esc="o.acopio_id.nombre_representante_c and o.acopio_id.nombre_representante_c.upper() or ''"/></td>
+                    <td style="width: 25%;">CARGO   <span t-esc="o.acopio_id.function and o.acopio_id.function.upper() or ''"/></td>
+                    <td style="width: 25%;">FIRMA                          
+                      <t t-if="o.acopio_id.contacto_firma">
+                          <img t-att-src="'data:image/png;base64,%s' % o.acopio_id.contacto_firma.decode('utf-8')" alt="Firma del destinatario" style="max-height: 30px;"/>
+                      </t>
+                      <t t-else="">
+                        <br/> 
+                          <!-- <p>_____________________________</p> -->
+                      </t>
+                    </td>
+                    <td style="width: 25%;"><strong>FECHA DE RECEPCIÓN</strong><span t-field="o.fecha_2"/></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>  
+
+
+
+
+            <br/> 
+            <div class="container-fluid" t-if="o.acopio == 'reg' or o.acopio == 'dob'" style="page-break-inside: avoid;">
+              <div class="text-center" style="background-color: #000000; font-size: 10px; color: white;">
+                <h6>DESTINATARIO</h6>
+              </div>
+
+
+                <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+                  <thead>
+                    <tr>
+                      <th style="width: 33%;">NOMBRE DE LA EMPRESA DESTINATARIA</th>
+                      <th style="width: 33%;">NÚMERO DE AUTORIZACIÓN</th>
+                      <th style="width: 33%;">DOMICILIO</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <td class="text-center"><span t-field="o.contact_id.parent_id"/></td>
+                    <td class="text-center"><span t-esc="o.contact_id.numero_generador_c"/></td>
+                    <td class="text-center">
+                      <span t-esc="o.contact_id.street_name and o.contact_id.street_name.upper() or ''"/> 
+                      # <span t-esc="o.contact_id.street_number"/> 
+                      , <span t-esc="o.contact_id.l10n_mx_edi_colony and o.contact_id.l10n_mx_edi_colony.upper() or ''"/> 
+                      , <span t-esc="o.contact_id.zip"/> 
+                      , <span t-esc="o.contact_id.city and o.contact_id.city.upper() or ''"/>
+                      , <span t-esc="o.contact_id.state_id.name and o.contact_id.state_id.name.upper() or ''"/>
+                      , <span t-esc="o.contact_id.country_id.name and o.contact_id.country_id.name.upper() or ''"/>
+                    </td>
+                  </tbody>
+                </table>
+                <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+                  <tbody>
+                    <tr>
+                      <td style="width: 33%;"><strong>RECIBI LOS RESIDUOS DESCRITOS EN EL MANIFIESTO</strong></td>
+                      <td style="width: 33%;"><strong>OBSERVACIONES: _______________________________.</strong></td> 
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+                  <thead>
+                    <tr>
+                      <th style="width: 33%;">NOMBRE</th>
+                      <th style="width: 33%;">CARGO</th>
+                      <th style="width: 33%;">FIRMA</th>
+                      <th style="width: 33%;">FECHA DE RECEPCIÓN</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <td class="text-center"><span t-esc="o.contact_id.nombre_representante_c and o.contact_id.nombre_representante_c.upper() or ''"/></td>
+                    <td class="text-center"><span t-esc="o.contact_id.function and o.contact_id.function.upper() or ''"/></td>
+                    <td class="text-center">
+                      <t t-if="o.contact_id.contacto_firma">
+                          <img t-att-src="'data:image/png;base64,%s' % o.contact_id.contacto_firma.decode('utf-8')" alt="Firma del destinatario" style="max-height: 30px;"/>
+                      </t>
+                      <t t-else="">
+                        <br/> 
+                          <!-- <p>_____________________________</p> -->
+                      </t>                  
+                    </td>
+                    <td class="text-center"><span t-field="o.fecha_2"/></td>
+                  </tbody>
+                </table>
+            </div>
+            </div>
+
+
+
+          <div t-if="o.observaciones">
+            <div class="container-fluid" style="page-break-inside: avoid;">
+              <div class="row" style="page-break-inside: avoid;">
+                <div class="col-12 text-left" style="font-size: 8px; color: BLACK;">
+                  <div class="text-center" style="background-color: #c8c8c8; font-size: 10px; color: white;">
+                    <h6>OBSERVACIONES</h6>
+                  </div>   
+                  <table class="table table-bordered" style="font-size: 10px; color: black; text-align: center;">
+                    <tbody>
+                      <td>
+                        <span t-field="o.observaciones"/>
+                      </td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div> 
+          </div>         
+          <br/><br/>
+          <div class="container-fluid" style="page-break-inside: avoid;">
+            <div class="row" style="page-break-inside: avoid;">
+              <div class="col-2 text-left" style="page-break-inside: avoid;">
+                <img t-att-src="'/report/barcode/QR/' + str(o.generate_qr_code_text())" style="width:100px;height:100px" alt="Barcode"/>
+              </div>
+              <div class="col-10 text-left" style="font-size: 8px; color: BLACK;">
+                <br/><br/><br/><br/><br/><span t-esc="o.generate_qr_code_text()"/>
+              </div>
+            </div>
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+
+
+</odoo>
+
+
+

@@ -1,0 +1,29 @@
+<odoo>
+    <!-- Acción de Reporte
+    <record id="action_manifiesto_print" model="ir.actions.act_window">
+        <field name="name">Manifiesto</field>
+        <field name="res_model">manifiestos.manifiesto</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="manifiesto_form_view"/>
+        <field name="context">{'default_report_name': 'manifiestos.report_manifiesto_solojal_2'}</field>
+    </record> -->
+
+    <record id="action_manifiesto_print_uno" model="ir.actions.report">
+        <field name="name">Manifiesto</field>
+        <field name="model">manifiestos.manifiesto</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">manifiestos.report_manifiesto_jal_2</field>
+        <field name="binding_model_id" ref="model_manifiestos_manifiesto"/>
+        <field name="binding_type">report</field>
+    </record>   
+
+    <record id="manifiestos_manifiesto_jal_2_report" model="ir.actions.report">
+        <field name="name">Manifiesto Report</field>
+        <field name="model">manifiestos.manifiesto</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">manifiestos.report_manifiesto_jal_2</field>
+        <field name="print_report_name">'Manifiesto - %s' % (object.name)</field>
+    </record>
+</odoo>
+
+

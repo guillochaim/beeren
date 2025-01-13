@@ -1,0 +1,16 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="manifiestos.FieldVisibilityWidget">
+        <div>
+            <select name="chofer_bd_man">
+                <option value="">Select</option>
+                <option value="bd">Tralisol</option>
+                <option value="man">Manual</option>
+                <!-- Agrega más opciones según sea necesario -->
+            </select>
+            <div name="f_firma_chofer" style="display: none;">
+                <!-- Contenido del campo personalizado -->
+            </div>
+        </div>
+    </t>
+</templates>
+
