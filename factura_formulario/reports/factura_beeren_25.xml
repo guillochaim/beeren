@@ -220,8 +220,8 @@
                       </t>
                       <br/>
                       <!-- Revisar
-                      <t t-set="cfdi_vals" t-value="o._l10n_mx_edi_decode_cfdi()"/> -->
-                      <t t-set="is_cfdi_signed" t-value="bool(o._get_l10n_mx_edi_signed_edi_document())"/>
+                      <t t-set="cfdi_vals" t-value="o._l10n_mx_edi_decode_cfdi()"/> 
+                      <t t-set="is_cfdi_signed" t-value="bool(o._get_l10n_mx_edi_signed_edi_document())"/>-->
                       <t t-if="is_cfdi_signed">
                           <p>
                               <span t-esc="o._l10n_mx_edi_cfdi_amount_to_text()"/>
